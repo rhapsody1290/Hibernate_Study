@@ -10,7 +10,7 @@ import org.hibernate.cfg.Configuration;
  */
 public class Main {
     public static void main(String[] args){
-
+        addEmployee();
     }
 
     public static void deleteEmployee() {
@@ -40,6 +40,7 @@ public class Main {
         Configuration configuration = new Configuration().configure();
         //2、创建sessionFactory，这是一个会话工厂
         SessionFactory sessionFactory = configuration.buildSessionFactory();
+        System.out.println("sessionFactory:" + sessionFactory);
         //3、创建session，相当于jdbc connection
         Session session = sessionFactory.openSession();
         //4、在进行增加、删除、修改的时候使用事务提交
