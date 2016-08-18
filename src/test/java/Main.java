@@ -1,16 +1,40 @@
 import cn.apeius.domain.Employee;
+import cn.apeius.util.HibernateUtil;
 import cn.apeius.util.MySessionFactory;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Order;
+
+import java.util.List;
 
 /**
  * Created by Asus on 2016/8/16.
  */
 public class Main {
     public static void main(String[] args){
-        updateEmployee();
+        Session session = HibernateUtil.getCurrentSession();
+        Transaction transaction = null;
+        try{
+            transaction = session.beginTransaction();
+            //do...
+            Criteria cri = session.createCriteria(Employee.class)
+                    .setMaxResults(2)
+                    .addOrder(Order.asc("id"));
+            List<Employee> list = cri.list();
+            for(Employee e : list){
+                System.out.println(e.getId() + " " + e.getName());
+            }
+            transaction.commit();
+        }catch (Exception e){
+            if (transaction != null){
+                transaction.rollback();
+            }
+            throw new RuntimeException(e.getMessage());
+        }finally {
+            if(session != null && session.isOpen()){
+                session.close();
+            }
+        }
     }
     //快速入门
     public static void addEmployee() {

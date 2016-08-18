@@ -18,6 +18,7 @@
         <property name="hibernate.connection.password">sa</property>-->
         <!--显示出对应的SQL语句-->
         <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
         <!--让hibernate自动创建表 create:如果没有这张表则创建-->
         <property name="hibernate.hbm2ddl.auto">update</property>
         <mapping resource="Employee.hbm.xml"/>
