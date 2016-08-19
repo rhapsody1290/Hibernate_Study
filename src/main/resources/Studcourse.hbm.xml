@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cn.apeius.domain.Studcourse" table="studcourse" schema="hibernate">
+        <id name="stuCourseId" column="stuCourseId"/>
+        <property name="grade" column="grade"/>
+        <many-to-one name="course" class="cn.apeius.domain.Course">
+            <column name="cid" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="student" class="cn.apeius.domain.Student">
+            <column name="sid" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

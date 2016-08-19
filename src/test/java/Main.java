@@ -1,9 +1,9 @@
 import cn.apeius.domain.Employee;
+import cn.apeius.domain.Student;
 import cn.apeius.util.HibernateUtil;
 import cn.apeius.util.MySessionFactory;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Order;
 
 import java.util.List;
 
@@ -17,15 +17,17 @@ public class Main {
         try{
             transaction = session.beginTransaction();
             //do...
-            Criteria cri = session.createCriteria(Employee.class)
-                    .setMaxResults(2)
-                    .addOrder(Order.asc("id"));
-            List<Employee> list = cri.list();
-            for(Employee e : list){
-                System.out.println(e.getId() + " " + e.getName());
+            List<Student> list = session.createQuery("from Student").list();
+            for(Student s : list){
+                System.out.println(s.getSname() + " "  + s.getSid());
             }
+            /*List<Employee> list = session.createQuery("from Employee").list();
+            for(Employee e : list){
+                System.out.println(e.getId() + " " + e.getName() + " " + e.getHiredate());
+            }*/
             transaction.commit();
         }catch (Exception e){
+            e.printStackTrace();
             if (transaction != null){
                 transaction.rollback();
             }

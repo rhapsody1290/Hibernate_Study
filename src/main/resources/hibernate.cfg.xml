@@ -11,16 +11,13 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
-        <!--<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
-        <property name="hibernate.connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:jtds:sqlserver://localhost:1433/hibernate</property>
-        <property name="hibernate.connection.username">sa</property>
-        <property name="hibernate.connection.password">sa</property>-->
         <!--显示出对应的SQL语句-->
         <property name="show_sql">true</property>
-        <property name="format_sql">true</property>
-        <!--让hibernate自动创建表 create:如果没有这张表则创建-->
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.format_sql">true</property>
+
         <mapping resource="Employee.hbm.xml"/>
+        <mapping resource="Student.hbm.xml"/>
+        <mapping resource="Course.hbm.xml"/>
+        <mapping resource="Studcourse.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

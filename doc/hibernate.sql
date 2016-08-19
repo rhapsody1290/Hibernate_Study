@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: hibernate
 Target Host: localhost
 Target Database: hibernate
-Date: 2016/8/18 20:40:24
+Date: 2016/8/19 10:36:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,7 +37,11 @@ CREATE TABLE `studcourse` (
   `sid` int(11) DEFAULT NULL,
   `cid` int(11) DEFAULT NULL,
   `grade` int(11) NOT NULL,
-  PRIMARY KEY (`stuCourseId`)
+  PRIMARY KEY (`stuCourseId`),
+  KEY `sid` (`sid`),
+  KEY `cid` (`cid`),
+  CONSTRAINT `sid` FOREIGN KEY (`sid`) REFERENCES `student` (`sid`) ON DELETE NO ACTION,
+  CONSTRAINT `cid` FOREIGN KEY (`cid`) REFERENCES `course` (`cid`) ON DELETE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
