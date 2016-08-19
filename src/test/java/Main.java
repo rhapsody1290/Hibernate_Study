@@ -1,4 +1,5 @@
 import cn.apeius.domain.Employee;
+import cn.apeius.domain.Studcourse;
 import cn.apeius.domain.Student;
 import cn.apeius.util.HibernateUtil;
 import cn.apeius.util.MySessionFactory;
@@ -14,17 +15,24 @@ public class Main {
     public static void main(String[] args){
         Session session = HibernateUtil.getCurrentSession();
         Transaction transaction = null;
+
+        int pageNow  = 1;
+        int pageSize = 3;
+        int pageCount = 0;
+        int rowCount = 0;
         try{
             transaction = session.beginTransaction();
             //do...
-            List<Student> list = session.createQuery("from Student").list();
-            for(Student s : list){
-                System.out.println(s.getSname() + " "  + s.getSid());
+            rowCount = Integer.parseInt(session.createQuery("select count(*) from Student").uniqueResult().toString());
+            pageCount = (rowCount -1)/pageSize + 1;
+            //遍历
+            for(int i = 0; i <= pageCount; i++){
+                System.out.println("***********************************");
+                List<Student> list = session.createQuery("from Student").setFirstResult(pageSize*i).setMaxResults(pageSize).list();
+                for(Student s : list){
+                    System.out.println(s.getSname());
+                }
             }
-            /*List<Employee> list = session.createQuery("from Employee").list();
-            for(Employee e : list){
-                System.out.println(e.getId() + " " + e.getName() + " " + e.getHiredate());
-            }*/
             transaction.commit();
         }catch (Exception e){
             e.printStackTrace();

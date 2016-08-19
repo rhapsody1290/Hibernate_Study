@@ -13,7 +13,7 @@
         <property name="hibernate.connection.password">root</property>
         <!--显示出对应的SQL语句-->
         <property name="show_sql">true</property>
-        <property name="hibernate.format_sql">true</property>
+        <!--<property name="hibernate.format_sql">true</property>-->
 
         <mapping resource="Employee.hbm.xml"/>
         <mapping resource="Student.hbm.xml"/>
