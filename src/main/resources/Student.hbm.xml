@@ -11,7 +11,7 @@
         <property name="sdept" column="sdept"/>
         <property name="sage" column="sage"/>
         <property name="saddress" column="saddress"/>
-        <set name="stucourses" inverse="true">
+        <set name="studcourses" inverse="true">
             <key>
                 <column name="sid" not-null="true"/>
             </key>

@@ -12,7 +12,7 @@ public class Student {
     private String sdept;
     private Integer sage;
     private String saddress;
-    private Collection<Studcourse> stucourses;
+    private Collection<Studcourse> studcourses;
 
     public int getSid() {
         return sid;
@@ -90,11 +90,11 @@ public class Student {
         return result;
     }
 
-    public Collection<Studcourse> getStucourses() {
-        return stucourses;
+    public Collection<Studcourse> getStudcourses() {
+        return studcourses;
     }
 
-    public void setStucourses(Collection<Studcourse> stucourses) {
-        this.stucourses = stucourses;
+    public void setStudcourses(Collection<Studcourse> studcourses) {
+        this.studcourses = studcourses;
     }
 }
