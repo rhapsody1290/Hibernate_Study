@@ -143,7 +143,6 @@ final public class HibernateUtil {
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e.getMessage());
-            // TODO: handle exception
         } finally {
 
             if (s != null && s.isOpen()) {
